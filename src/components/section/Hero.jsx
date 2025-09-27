@@ -5,6 +5,11 @@ import "./hero.scss";
 
 function Hero() {
   const [email, setEmail] = useState("");
+  const [videoError, setVideoError] = useState(false);
+
+  const handleVideoError = () => {
+    setVideoError(true);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,22 +21,32 @@ function Hero() {
     <section id="home" className="hero">
       <div className="hero__background">
         {/* Background Video */}
-        <video className="hero__video" autoPlay muted loop playsInline>
+        <video
+          className={`hero__video ${videoError ? "hero__video--hidden" : ""}`}
+          autoPlay
+          muted
+          loop
+          playsInline
+          onError={handleVideoError}
+          onLoadStart={() => setVideoError(false)}
+        >
           <source src="/assets/hero-bg.mov" type="video/mp4" />
-          <source src="/videos/hero-background.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
+
+        {/* Gradient Fallback Overlay */}
+        <div
+          className={`hero__gradient-fallback ${
+            videoError ? "hero__gradient-fallback--active" : ""
+          }`}
+        ></div>
+
         <div className="hero__overlay"></div>
       </div>
 
       <div className="container">
         <div className="hero__content">
           <div className="hero__text">
-            {/* <div className="hero__badge">
-              <span>⭐</span>
-              #1 Personal Trainer in Los Angeles County
-            </div> */}
-
             <h1 className="hero__title">
               Don't have time to detail your car yourself?&nbsp;
               <span className="hero__highlight">
