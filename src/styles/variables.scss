@@ -1,0 +1,80 @@
+// ================================
+// MOBILE DETAILING WEBSITE VARIABLES
+// ================================
+
+// --------------------------------
+// BASE COLORS
+// --------------------------------
+$white: #ffffff;
+$black: #000000;
+
+// --------------------------------
+// UNIVERSAL COLOR PALETTE
+// --------------------------------
+// Primary Grey Scale
+$grey-light: #f9fafb;
+$grey-medium: #6b7280;
+$grey-dark: #181818;
+$grey-darker: #111827;
+
+// Primary Brand Colors
+$primary: #3b82f6; // Blue
+$primary-dark: #1e40af; // Darker blue
+$accent: #f59e0b; // Amber/Orange
+$accent-dark: #d97706; // Darker amber
+
+// --------------------------------
+// UNIVERSAL STYLES
+// --------------------------------
+// Backgrounds
+$bg-light: $grey-light;
+$bg-dark: $grey-dark;
+$bg-card: #151722;
+
+// Text Colors
+$text-primary: $grey-darker;
+$text-secondary: $grey-medium;
+$text-light: $white;
+$text-muted: rgba(255, 255, 255, 0.8);
+
+// Gradients
+$gradient-primary: linear-gradient(135deg, $primary-dark 0%, $primary 100%);
+$gradient-accent: linear-gradient(135deg, $accent 0%, $accent-dark 100%);
+$gradient-highlight: linear-gradient(135deg, $primary, #8b5cf6);
+
+// Buttons
+$btn-primary-bg: $gradient-accent;
+$btn-primary-text: $white;
+$btn-secondary-bg: $gradient-primary;
+$btn-secondary-text: $white;
+
+// Shadows
+$shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+$shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+// --------------------------------
+// TYPOGRAPHY
+// --------------------------------
+// Font sizes
+$text-sm: 0.875rem; // 14px
+$text-base: 1rem; // 16px
+$text-lg: 1.125rem; // 18px
+$text-xl: 1.25rem; // 20px
+$text-2xl: 1.5rem; // 24px
+$text-3xl: 1.875rem; // 30px
+$text-4xl: 2.25rem; // 36px
+$text-5xl: 3rem; // 48px
+
+// Font weights
+$font-normal: 400;
+$font-semibold: 600;
+$font-bold: 700;
+$font-extrabold: 800;
+
+// Line heights
+$leading-tight: 1.2;
+$leading-normal: 1.5;
+$leading-relaxed: 1.6;
+$leading-loose: 1.7;

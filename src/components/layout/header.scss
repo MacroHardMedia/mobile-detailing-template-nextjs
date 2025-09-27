@@ -1,0 +1,313 @@
+@use "../../styles/variables" as *;
+
+// Header Styles - Mobile Detailing Theme with Universal Colors
+.header {
+  background: linear-gradient(135deg, $grey-dark 10%, $black 100%);
+  box-shadow: $shadow-lg;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  font-family: futura;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  // Logo Styling
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    // Remove the old h2 and ::before styles, replace with:
+    &-img {
+      height: 35px;
+      width: auto; // Maintains aspect ratio
+      object-fit: contain;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  // Mobile Menu Toggle
+  &__mobile-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    z-index: 1001;
+
+    @media (max-width: 768px) {
+      display: flex;
+    }
+
+    .hamburger {
+      width: 25px;
+      height: 3px;
+      background-color: $text-light;
+      margin: 2px 0;
+      transition: 0.3s;
+      transform-origin: center;
+
+      &:nth-child(1) {
+        transform: translateY(0);
+      }
+
+      &:nth-child(2) {
+        opacity: 1;
+      }
+
+      &:nth-child(3) {
+        transform: translateY(0);
+      }
+    }
+
+    // Hamburger animation when active
+    &.active {
+      .hamburger {
+        &:nth-child(1) {
+          transform: translateY(7px) rotate(45deg);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          transform: translateY(-7px) rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  // Navigation Styling
+  &__nav {
+    @media (max-width: 768px) {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100vh;
+      background: $gradient-primary;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: right 0.3s ease;
+      z-index: 1000;
+
+      &.active {
+        right: 0;
+      }
+    }
+
+    ul {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 3rem;
+        text-align: center;
+      }
+    }
+
+    a {
+      color: $text-muted;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+
+      @media (max-width: 768px) {
+        font-size: 1.2rem;
+        padding: 1rem 2rem;
+        font-weight: 600;
+      }
+
+      &:hover {
+        color: $text-light;
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      // Active nav item
+      &.active {
+        color: $text-light;
+        background-color: rgba(255, 255, 255, 0.15);
+      }
+    }
+  }
+
+  // CTA Button Styling
+  &__cta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      gap: 0.5rem;
+      display: none;
+    }
+
+    @media (max-width: 480px) {
+      .btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.7rem;
+
+        &:last-child {
+          display: none; // Hide second button on very small screens
+        }
+      }
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      @media (max-width: 768px) {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  // Mobile overlay for menu
+  &__overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+
+    @media (max-width: 768px) {
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+  // Scroll effect
+  &.scrolled {
+    background: $gradient-primary;
+    box-shadow: 0 6px 30px rgba(30, 58, 138, 0.2);
+  }
+
+  // Trust-building elements
+  &__trust-indicators {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.8);
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  // Tablet specific adjustments
+  @media (max-width: 1024px) and (min-width: 769px) {
+    &__nav ul {
+      gap: 1.5rem;
+    }
+
+    &__nav a {
+      font-size: 0.45rem;
+      padding: 0.4rem 0.8rem;
+    }
+
+    &__cta .btn {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.7rem;
+    }
+  }
+}
+
+// Button styles nested properly
+.btn {
+  &--primary {
+    background: $btn-primary-bg;
+    color: $btn-primary-text;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+
+    &:hover {
+      background: linear-gradient(135deg, $accent-dark 0%, #b45309 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(245, 158, 11, 0.4);
+    }
+
+    &:active {
+      transform: translateY(-1px);
+    }
+  }
+
+  &--secondary {
+    background: transparent;
+    color: $text-light;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// Trust badge styling
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+// Prevent scrolling when mobile menu is open
+body.menu-open {
+  overflow: hidden;
+
+  @media (min-width: 769px) {
+    overflow: visible;
+  }
+}

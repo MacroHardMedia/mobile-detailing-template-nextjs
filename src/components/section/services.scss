@@ -1,0 +1,137 @@
+@use "../../styles/variables" as *;
+
+.services {
+  padding: 6rem 0;
+  position: relative;
+  background-color: $bg-dark;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: $font-extrabold;
+    line-height: $leading-tight;
+    margin-bottom: 1.5rem;
+    color: $text-primary;
+  }
+
+  &__highlight {
+    background: $gradient-highlight;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &__subtitle {
+    font-size: $text-base;
+    line-height: $leading-loose;
+    color: $text-secondary;
+    margin: 0;
+  }
+
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    @media (max-width: 400px) {
+      gap: 1.5rem;
+    }
+  }
+
+  &__cta {
+    background: $bg-card;
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: $shadow-lg;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  &__cta-title {
+    font-size: $text-2xl;
+    font-weight: $font-bold;
+    color: $text-primary;
+    margin-bottom: 1rem;
+  }
+
+  &__cta-text {
+    font-size: $text-lg;
+    color: $text-secondary;
+    line-height: $leading-relaxed;
+    margin-bottom: 2rem;
+  }
+
+  &__cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @media (max-width: 500px) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      font-size: $text-base;
+      font-weight: $font-semibold;
+      border-radius: 10px;
+      min-width: 140px;
+
+      @media (max-width: 500px) {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+
+    &__header {
+      margin-bottom: 3rem;
+    }
+
+    &__grid {
+      margin-bottom: 3rem;
+    }
+
+    &__cta {
+      padding: 2rem 1.5rem;
+    }
+
+    &__cta-title {
+      font-size: $text-xl;
+    }
+
+    &__cta-text {
+      font-size: $text-base;
+    }
+  }
+}

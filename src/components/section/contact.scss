@@ -1,0 +1,13 @@
+.contact {
+  padding: 1rem; // Mobile first - 1rem for mobile
+
+  // Tablet and up
+  @media (min-width: 768px) {
+    padding: 5rem;
+  }
+
+  // Desktop and up
+  @media (min-width: 1024px) {
+    padding: 10rem;
+  }
+}
