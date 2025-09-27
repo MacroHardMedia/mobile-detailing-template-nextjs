@@ -50,7 +50,7 @@ function Hero() {
             <h1 className="hero__title">
               Don't have time to detail your car yourself?&nbsp;
               <span className="hero__highlight">
-                We bring professional detailing
+                We bring professional mobile detailing
               </span>
               &nbsp;right to your home
               <br />
