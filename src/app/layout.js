@@ -8,6 +8,24 @@ export const metadata = {
     "Professional mobile car detailing services. Expert interior cleaning, exterior detailing, and headlight restoration. Convenient service at your location.",
   keywords:
     "mobile car detailing, professional car care, auto detailing, car wash service, mobile detailing near me, interior cleaning, exterior detailing, headlight restoration",
+  authors: [{ name: "Zuma Mobile Detailing" }],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    title: "Zuma Mobile Detailing - Professional Car Care Services",
+    description: "Professional mobile car detailing services. Interior cleaning, exterior detailing, and headlight restoration. We come to you!",
+    type: "website",
+    locale: "en_US",
+  },
 };
 
 export default function RootLayout({ children }) {

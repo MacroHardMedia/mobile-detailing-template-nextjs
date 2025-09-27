@@ -38,7 +38,7 @@ const Services = () => {
   };
 
   return (
-    <section className="services">
+    <section id="services" className="services">
       <div className="container">
         <div className="services__header">
           <h2 className="services__title">

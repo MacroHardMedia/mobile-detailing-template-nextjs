@@ -13,7 +13,7 @@ function Hero() {
   };
 
   return (
-    <section className="hero">
+    <section id="home" className="hero">
       <div className="hero__background">
         {/* Background Video */}
         <video
