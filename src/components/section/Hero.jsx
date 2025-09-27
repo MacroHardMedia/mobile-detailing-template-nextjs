@@ -16,14 +16,7 @@ function Hero() {
     <section id="home" className="hero">
       <div className="hero__background">
         {/* Background Video */}
-        <video
-          className="hero__video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/path/to/poster-image.jpg" // Optional fallback image
-        >
+        <video className="hero__video" autoPlay muted loop playsInline>
           <source src="/assets/hero-bg.mov" type="video/mp4" />
           <source src="/videos/hero-background.webm" type="video/webm" />
           Your browser does not support the video tag.
