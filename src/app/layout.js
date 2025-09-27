@@ -15,14 +15,15 @@ export const metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   openGraph: {
     title: "Zuma Mobile Detailing - Professional Car Care Services",
-    description: "Professional mobile car detailing services. Interior cleaning, exterior detailing, and headlight restoration. We come to you!",
+    description:
+      "Professional mobile car detailing services. Interior cleaning, exterior detailing, and headlight restoration. We come to you!",
     type: "website",
     locale: "en_US",
   },
