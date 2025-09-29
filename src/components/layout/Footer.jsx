@@ -24,6 +24,9 @@ function Footer() {
                 <li>
                   <a href="#contact">Contact</a>
                 </li>
+                <li>
+                  <a href="/privacy-policy">Privacy Policy</a>
+                </li>
               </ul>
             </div>
 
@@ -57,7 +60,14 @@ function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <p>&copy; 2025 Elite Mobile Detailing. All rights reserved.</p>
+          <div className="footer__legal">
+            <p>&copy; 2025 Elite Mobile Detailing. All rights reserved.</p>
+            <div className="legal-links">
+              <a href="/privacy-policy">Privacy Policy</a>
+              <span className="separator">|</span>
+              <a href="/terms-of-service">Terms of Service</a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
