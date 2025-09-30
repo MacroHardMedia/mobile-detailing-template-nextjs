@@ -2,7 +2,7 @@
 
 .packages {
   padding: 4rem 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background-color: $bg-dark;
 
   .container {
     max-width: 1200px;
@@ -16,19 +16,9 @@
 
     .section-title {
       font-size: 2.5rem;
-      color: $grey-dark;
+      color: white;
       margin-bottom: 1rem;
       position: relative;
-
-      &::after {
-        content: "";
-        width: 60px;
-        height: 4px;
-        background: linear-gradient(45deg, $primary, $accent);
-        display: block;
-        margin: 1rem auto;
-        border-radius: 2px;
-      }
 
       @media (max-width: 768px) {
         font-size: 2rem;
@@ -37,7 +27,7 @@
 
     .section-subtitle {
       font-size: 1.2rem;
-      color: $grey-medium;
+      color: $text-muted;
       max-width: 600px;
       margin: 0 auto;
       line-height: 1.6;
@@ -94,7 +84,7 @@
       display: inline-block;
 
       &.primary {
-        background: linear-gradient(45deg, $primary, $accent);
+        background-color: $accent;
         color: white;
 
         &:hover {
@@ -118,22 +108,24 @@
 }
 
 .package-card {
-  background: white;
+  background: $bg-card;
   border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   position: relative;
-  border: 2px solid transparent;
+  border: 2px solid rgba(255, 255, 255, 0.1);
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
   }
 
   &.featured {
     border-color: $primary;
     transform: scale(1.05);
+    background: lighten($bg-card, 3%);
 
     @media (max-width: 768px) {
       transform: none;
@@ -155,7 +147,7 @@
     top: -10px;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(45deg, $primary, $accent);
+    background-color: $accent;
     color: white;
     padding: 0.5rem 1.5rem;
     border-radius: 20px;
@@ -168,11 +160,11 @@
     text-align: center;
     margin-bottom: 1.5rem;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
     .package-name {
       font-size: 1.8rem;
-      color: $grey-dark;
+      color: $white;
       margin-bottom: 0.5rem;
       font-weight: 700;
     }
@@ -182,7 +174,7 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      color: $grey-medium;
+      color: $text-muted;
       font-size: 1rem;
 
       .duration-icon {
@@ -200,13 +192,13 @@
       align-items: center;
       padding: 0.75rem 1rem;
       margin-bottom: 0.5rem;
-      background: #f8f9fa;
+      background: rgba(255, 255, 255, 0.05);
       border-radius: 8px;
       border-left: 4px solid $primary;
 
       .vehicle-type {
         font-weight: 500;
-        color: $grey-dark;
+        color: $text-muted;
       }
 
       .price {
@@ -264,26 +256,17 @@
 .add-ons {
   margin: 3rem 0;
   padding: 2rem;
-  background: white;
+  background: $bg-card;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
   &__title {
     font-size: 1.8rem;
-    color: $grey-dark;
+    color: $white;
     text-align: center;
     margin-bottom: 2rem;
     position: relative;
-
-    &::after {
-      content: "";
-      width: 40px;
-      height: 3px;
-      background: linear-gradient(45deg, $primary, $accent);
-      display: block;
-      margin: 0.5rem auto;
-      border-radius: 2px;
-    }
   }
 
   &__grid {
@@ -300,13 +283,13 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1.5rem;
-    background: #f8f9fa;
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
-    border-left: 4px solid $accent;
+    border-left: 4px solid $primary;
     transition: all 0.3s ease;
 
     &:hover {
-      background: #e9ecef;
+      background: rgba(255, 255, 255, 0.08);
       transform: translateX(5px);
     }
 
@@ -317,7 +300,7 @@
 
       .addon-name {
         font-weight: 600;
-        color: $grey-dark;
+        color: $white;
         font-size: 1rem;
       }
 
@@ -376,5 +359,246 @@
     &__grid {
       grid-template-columns: 1fr;
     }
+  }
+}
+
+// Modal Styles
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: $bg-card;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  h2 {
+    color: $white;
+    font-size: 1.8rem;
+    margin: 0;
+    font-weight: 700;
+  }
+
+  .modal-close {
+    background: none;
+    border: none;
+    color: $text-muted;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: $white;
+    }
+  }
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+.modal-duration {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: $text-muted;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+
+  .duration-icon {
+    font-size: 1.3rem;
+  }
+}
+
+.modal-pricing {
+  margin-bottom: 2rem;
+
+  h3 {
+    color: $white;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .pricing-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    .pricing-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      border-left: 4px solid $primary;
+
+      span:first-child {
+        color: $text-muted;
+        font-weight: 500;
+      }
+
+      span:last-child {
+        color: $primary;
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+.modal-services {
+  margin-bottom: 2rem;
+
+  h3 {
+    color: $white;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 6px;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: $text-muted;
+
+      .checkmark {
+        color: $primary;
+        font-weight: bold;
+        font-size: 1rem;
+        margin-top: 0.1rem;
+        flex-shrink: 0;
+      }
+    }
+  }
+}
+
+.modal-footer {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
+
+  .modal-btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+
+    &.primary {
+      background: linear-gradient(45deg, $primary, $accent);
+      color: white;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba($primary, 0.3);
+      }
+    }
+
+    &.secondary {
+      background: transparent;
+      color: $text-muted;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: $white;
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+  }
+}
+
+// Mobile modal adjustments
+@media (max-width: 768px) {
+  .modal-content {
+    max-height: 95vh;
+    margin: 0.5rem;
+  }
+
+  .modal-header {
+    padding: 1.5rem 1.5rem 1rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .modal-body {
+    padding: 1.5rem;
+  }
+
+  .modal-services ul {
+    grid-template-columns: 1fr;
   }
 }

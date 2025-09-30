@@ -1,74 +1,83 @@
 "use client";
+import { useState } from "react";
 import "./packages.scss";
 
 const packagesData = {
   packages: [
     {
-      name: "Basic Detail",
-      duration_hours: 2,
+      name: "Express Detail",
+      duration_hours: "2 - 3",
       pricing: {
         sedan_coupe: 95,
         small_suv: 110,
         large_suv_truck: 130,
       },
       services: [
-        "Rinseless or hand wash",
+        "2 bucket rinseless wash",
         "Quick dry",
         "Wheels & tire clean",
-        "Light interior vacuum",
+        "Interior vacuum",
         "Wipe down surfaces",
         "Interior & exterior glass cleaned",
-        "Spray wax",
+        "Spray on ceramic coating",
         "Light tire dressing",
-        "Air freshener",
       ],
     },
     {
-      name: "Standard Detail",
-      duration_hours: 3,
+      name: "Full Detail",
+      duration_hours: "3 - 4",
       pricing: {
-        sedan_coupe: 170,
-        small_suv: 200,
-        large_suv_truck: 240,
+        sedan_coupe: 200,
+        small_suv: 230,
+        large_suv_truck: 260,
       },
       services: [
-        "Full 2-bucket wash & dry",
-        "Wheels & wheel wells cleaned",
+        "Eveything in the express detail",
+        "Deep foam pre-wash",
+        "2-bucket rinseless wash",
+        "Wheels & barrels cleaned",
+        "Ceramic spray sealant (up to 3 months protection)",
         "Door jambs cleaned",
+        "Gas lid cleaned",
         "Detailed interior vacuum",
+        "Interior steam sanitization",
+        "Seatbelts cleaned",
+        "Detailed interior wipe down and dressed",
+        "Leather seats conditioned",
+        "Air vents cleaned",
         "Wipe down & protectant applied",
         "Light carpet/seat spot cleaning",
         "Interior & exterior glass cleaned",
-        "Spray sealant (up to 3 months protection)",
         "Tire dressing",
         "Floor mats cleaned",
       ],
     },
     {
       name: "Premium Detail",
-      duration_hours: 4.5,
+      duration_hours: "5 - 8",
       pricing: {
         sedan_coupe: 350,
-        small_suv: 420,
-        large_suv_truck: 500,
+        small_suv: 380,
+        large_suv_truck: 410,
       },
       services: [
+        "Everything in the full detail included",
         "Deep foam & 2-bucket wash",
-        "Clay bar & paint decontamination",
-        "1-step machine polish",
+        "Chemical paint decontamination",
+        "Clay bar decontamination",
+        "Paint (cut/polish) correction",
+        "Carnauba wax deep shine",
         "Wheels, barrels & wells cleaned",
         "Door & trunk jambs cleaned",
-        "Long-lasting tire dressing",
+        "Premium tire dressing",
         "Full interior vacuum (crevices, under seats)",
-        "Interior wipe down & UV protectant",
+        "Interior wipe down & dressed",
+        "Interior steam sanitized",
         "Full carpet & upholstery shampoo/extraction",
         "Leather clean & conditioner",
-        "Machine-applied wax or sealant (6–12 months)",
-        "Optional ceramic spray topper",
-        "Trim restoration",
-        "Headlight polish",
-        "Full glass cleaned",
+        "Full glass decontaminated and cleaned",
         "Premium mat cleaning",
+        "Headliner cleaned",
       ],
     },
   ],
@@ -80,13 +89,25 @@ const packagesData = {
       price_range: "$60–$150",
     },
     { name: "Headlight restoration", price_range: "$40–$75" },
-    { name: "Ceramic spray topper", price_range: "$75–$200" },
   ],
 };
 
 function Packages() {
+  const [selectedPackage, setSelectedPackage] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const formatVehicleType = (type) => {
     return type.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
+  };
+
+  const openModal = (pkg) => {
+    setSelectedPackage(pkg);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedPackage(null);
+    setIsModalOpen(false);
   };
 
   return (
@@ -133,7 +154,12 @@ function Packages() {
               </div>
 
               <div className="package-card__footer">
-                <button className="package-btn secondary">Learn More</button>
+                <button
+                  className="package-btn secondary"
+                  onClick={() => openModal(pkg)}
+                >
+                  Learn More
+                </button>
               </div>
             </div>
           ))}
@@ -149,7 +175,6 @@ function Packages() {
                   <span className="addon-name">{addon.name}</span>
                   <span className="addon-price">{addon.price_range}</span>
                 </div>
-                <button className="addon-btn">Add</button>
               </div>
             ))}
           </div>
@@ -161,9 +186,69 @@ function Packages() {
           <p>Get a custom quote based on your vehicle and service needs</p>
           <div className="cta-buttons">
             <button className="cta-btn primary">Get Free Quote</button>
-            <button className="cta-btn secondary">Call (818) 308-0207</button>
+            <button className="cta-btn secondary">Call (747) 347-8176</button>
           </div>
         </div>
+
+        {/* Modal */}
+        {isModalOpen && selectedPackage && (
+          <div className="modal-overlay" onClick={closeModal}>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+              <div className="modal-header">
+                <h2>{selectedPackage.name}</h2>
+                <button className="modal-close" onClick={closeModal}>
+                  ×
+                </button>
+              </div>
+
+              <div className="modal-body">
+                <div className="modal-duration">
+                  <span className="duration-icon">⏱️</span>
+                  <span>{selectedPackage.duration_hours} hours</span>
+                </div>
+
+                <div className="modal-pricing">
+                  <h3>Pricing</h3>
+                  <div className="pricing-list">
+                    <div className="pricing-item">
+                      <span>Sedan/Coupe</span>
+                      <span>${selectedPackage.pricing.sedan_coupe}</span>
+                    </div>
+                    <div className="pricing-item">
+                      <span>Small SUV</span>
+                      <span>${selectedPackage.pricing.small_suv}</span>
+                    </div>
+                    <div className="pricing-item">
+                      <span>Large SUV/Truck</span>
+                      <span>${selectedPackage.pricing.large_suv_truck}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="modal-services">
+                  <h3>What's Included</h3>
+                  <ul>
+                    {selectedPackage.services.map((service, index) => (
+                      <li key={index}>
+                        <span className="checkmark">✓</span>
+                        {service}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="modal-footer">
+                  {/* <button className="modal-btn primary">
+                    Book {selectedPackage.name}
+                  </button> */}
+                  <button className="modal-btn secondary" onClick={closeModal}>
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
